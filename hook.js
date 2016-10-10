@@ -5,7 +5,8 @@ var router = express.Router();
 
 router.use(bodyParser.json());
 router.post('/', function(req, res) {
-  console.log(req.body);
+  // console.log(req.body);
+  console.log('hook called');
   if (req.body.ref && req.body.ref == 'refs/heads/master') {
     console.log('master pushed, deploy update');
     exec('git pull -q --ff-only anon master', (error) => {
