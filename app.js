@@ -1,7 +1,9 @@
 #!/usr/bin/env nodejs
+var pjson = require('./package.json');
 var express = require('express');
 var cons = require('consolidate');
 var log = require('./log');
+var hook = require('./hook');
 var app = express();
 
 app.set('trust proxy', 'loopback');
@@ -23,11 +25,12 @@ app.get('/name/:name', function (req, res) {
 });
 app.get('/log', log.view);
 app.post('/log', log.post);
+app.use('/hook', hook);
 
 app.use(function(req, res, next) {
   res.status(404).render('404');
 });
 
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+  console.log(`${pjson.name} v${pjson.version} listening on port 3000!`);
 });

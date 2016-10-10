@@ -1,6 +1,6 @@
 {
   "name": "cc-turtlecon",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "ComputerCraft Turtle Controller",
   "main": "app.js",
   "scripts": {
